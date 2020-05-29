@@ -5,24 +5,12 @@ type Contact {
     parentContact: User!
 }
 
-type User {
-    iduser: ID!
-    email: String!
-    password: String!
-    contacts: [Contact!]
-}
-
 type Mutation {
     addContact(number: String!, name: String!, iduser: Int!): Contact!
-    addUser(email: String!,password: String!): User!
-    deleteUser(iduser: ID!): ID!
     deleteContact(idcontact: ID!): ID!
 }
 
 type Query {
-    status: String!
-    users: [User!]!
     contacts: [Contact!]!
-    user(iduser: ID!): User!
     contact(idcontact: ID!): Contact!
 }
