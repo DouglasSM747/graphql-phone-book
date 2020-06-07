@@ -14,8 +14,12 @@ def menuUser():
         return op
 
 
+def cls():
+    print("\n"*40)
+
+
 def login():
-    print("to enter the system it is necessary to login\n\n")
+    print("To enter the system it is necessary to login\n\n")
     email = input("email: ")
     password = input("password: ")
-    return {email, password}
+    return [email, password]

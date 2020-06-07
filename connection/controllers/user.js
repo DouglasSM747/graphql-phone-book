@@ -17,6 +17,11 @@ module.exports = app => {
     User.add(user)
   })
 
+  app.check('/users/user', (req) => {
+    const user = req.body
+    User.add(user)
+  })
+
   app.delete('/users/user/:id', (req) => {
     const { id } = req.params
     User.delete(id)

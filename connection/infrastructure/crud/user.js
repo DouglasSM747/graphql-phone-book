@@ -17,8 +17,19 @@ class User {
     })
   }
 
+  check(item) {
+    const { email, password } = item
+    const sql = `SELECT * FROM user WHERE email = '${email}' AND password = '${password}';`
+    return runQuery(sql).then(resp => {
+      if (resp.length == 1) {
+        return true
+      }
+      return false
+    })
+  }
+
   search(id) {
-    const sql = `SELECT * FROM user WHERE iduser=${id}; SELECT * FROM contact WHERE contact.iduser=${id}`
+    const sql = `SELECT * FROM user WHERE iduser = ${id}; SELECT * FROM contact WHERE contact.iduser = ${id} `
     return runQuery(sql).then(resp => {
       const user = resp[0][0]
       const contacts = resp[1]
@@ -30,6 +41,8 @@ class User {
 
     })
   }
+
+
 
   add(item) {
     const { email, password } = item
@@ -44,7 +57,7 @@ class User {
   }
 
   delete(userid) {
-    const sql = `DELETE FROM user WHERE iduser=${userid}`
+    const sql = `DELETE FROM user WHERE iduser = ${userid} `
     return runQuery(sql).then(resp => userid)
   }
 }

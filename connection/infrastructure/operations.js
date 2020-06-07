@@ -18,6 +18,10 @@ class Operations {
     return cruds[this.entity].add(item)
   }
 
+  check(item) {
+    return cruds[this.entity].check(item)
+  }
+
   delete(userid) {
     return cruds[this.entity].delete(userid)
   }

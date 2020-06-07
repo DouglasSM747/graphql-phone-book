@@ -11,6 +11,7 @@ type Mutation {
 }
 
 type Query {
+    checkUser(email: String!, password: String!): Boolean!
     users: [User!]!
     user(iduser: ID!): User!
 }
