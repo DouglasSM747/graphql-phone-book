@@ -22,9 +22,9 @@ class User {
     const sql = `SELECT * FROM user WHERE email = '${email}' AND password = '${password}';`
     return runQuery(sql).then(resp => {
       if (resp.length == 1) {
-        return true
+        return resp[0].iduser
       }
-      return false
+      return -1
     })
   }
 

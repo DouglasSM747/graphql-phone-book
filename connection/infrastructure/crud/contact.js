@@ -34,6 +34,7 @@ class Contact {
 
   add(item) {
     const { number, name, iduser } = item
+    console.log(item)
     const sql = `INSERT INTO contact(number, name, iduser) VALUES('${number}', '${name}', '${iduser}')`
     return runQuery(sql).then(resp =>
       ({
