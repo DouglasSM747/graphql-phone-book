@@ -5,7 +5,14 @@ url = "http://localhost:4000/"
 
 
 def addUser(email, password):
-    print("a")
+    query = 'mutation { addUser(email: "'+email + \
+        '", password: "'+password+'"){ email } }'
+    data = requests.post(
+        url, headers={"content-type": "application/json"}, json={'query': query})
+    if(data.status_code == 200):
+        return data.json()
+    else:
+        raise Exception("Query failed")
 
 
 def addContact(name, number, idUser):

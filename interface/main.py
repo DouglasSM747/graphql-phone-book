@@ -15,7 +15,17 @@ class bcolors:
 
 
 def main():
-    infos = sc.login()
+    sc.cls()
+    op = int(input(bcolors.HEADER +
+                   "Login (1)\nRegister New Account (2)\noption: " + bcolors.ENDC))
+    if(op == 1):
+        infos = sc.login()
+    elif(op == 2):
+        infoRegistrer = sc.registerUser()
+        ct.addUser(infoRegistrer[0], infoRegistrer[1])
+        main()
+    else:
+        main()
     idUSer = ""
     try:
         idUSer = ct.login(infos[0], infos[1])
@@ -26,17 +36,14 @@ def main():
     if(idUSer == "-1"):
         main()
     else:
-        sc.cls()
         while(True):
             op = sc.menuUser()
-            sc.cls()
             # select options menu case
 
             # -----------------------------------------------------------------------------------
             # Registrer new contact
             if(op == 1):
                 infoRegistrer = sc.registerContact()
-                sc.cls()
                 try:
                     ct.addContact(
                         infoRegistrer['name'],
@@ -71,7 +78,9 @@ def main():
                 for i in arrayResult:
                     print("Name: ", i['name'], " <---> ",
                           "Number:", i['number'])
-                input("\npress enter to continue . . .  ")
+                input("\npress enter to continue . . .      ")
+            elif(op == 4):
+                break
 
 
 main()
