@@ -15,6 +15,18 @@ def addUser(email, password):
         raise Exception("Query failed")
 
 
+def sendMessage(iduser, idcontact, message):
+    query = 'mutation { sendMessage(iduser: '+str(iduser) + \
+        ', idcontact: '+str(idcontact)+', message: "'+message+'"){ message } }'
+    print("query executed: ", query)
+    data = requests.post(
+        url, headers={"content-type": "application/json"}, json={'query': query})
+    if(data.status_code == 200):
+        return data.json()
+    else:
+        raise Exception("Query failed")
+
+
 def addContact(name, number, idUser):
     query = 'mutation { addContact(number: "'+number + \
         '", name: "'+name+'", iduser: '+idUser+' ) { name } }'
@@ -37,7 +49,8 @@ def listUsers():
 
 
 def listContacts(idUser):
-    query = 'query { user( iduser: '+idUser+'){ contacts{ name, number } } }'
+    query = 'query { user( iduser: '+idUser + \
+        '){ contacts{ name, number, idcontact } } }'
     data = requests.post(
         url, headers={"content-type": "application/json"}, json={'query': query})
     if(data.status_code == 200):

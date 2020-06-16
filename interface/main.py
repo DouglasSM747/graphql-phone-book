@@ -75,11 +75,17 @@ def main():
                 print(
                     bcolors.OKBLUE + "\n--------your contacts--------\n" + bcolors.ENDC)
                 for i in arrayResult:
-                    print("Name: ", i['name'], " <---> ",
+                    print("Id Contact: ", i['idcontact'],  " - Name: ", i['name'], " <---> ",
                           "Number:", i['number'])
                 input("\npress enter to continue . . .      ")
+            # -----------------------------------------------------------------------------------
+            # Send Message to contact
             elif(op == 3):
-                print("1")
+                idContact = int(
+                    input("Enter the ID of the contact you want to send a message: "))
+                message = input("digit your message to contact: ")
+                ct.sendMessage(idUSer, idContact, message)
+                input("\npress enter to continue . . .      ")
             elif(op == 4):
                 break
 

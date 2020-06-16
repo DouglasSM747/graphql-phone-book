@@ -18,7 +18,7 @@ def menuUser():
     print(bcolors.HEADER + "welcome to your phone book\n\n" + bcolors.ENDC)
     print("1 - register new contacts \n")
     print("2 - list contacts\n")
-    print("3 - your messages\n")
+    print("3 - send messages\n")
     print("4 - exit system\n")
     op = int(input("enter the desired option: "))
     cls()
@@ -26,6 +26,11 @@ def menuUser():
         menuUser()
     else:
         return op
+
+
+def listMessages(List):
+    for i in range(len(List)):
+        print(bcolors.BOLD + i, "           ", List[i] + bcolors.ENDC)
 
 
 def registerContact():
