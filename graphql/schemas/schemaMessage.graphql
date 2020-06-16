@@ -1,0 +1,15 @@
+type Message {
+    idmessage: ID!
+    iduser: Int!
+    idcontact: Int!
+    message: String!
+}
+
+type Mutation {
+    sendMessage(iduser: Int!, idcontact: Int!, message: String!): Message!
+}
+
+type Query {
+    userMessagesTContact(iduser: Int!, idcontact: Int!): [Message]!
+    checkMessage(idmessage: ID!): Message!
+}

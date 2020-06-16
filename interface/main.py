@@ -39,7 +39,6 @@ def main():
         while(True):
             op = sc.menuUser()
             # select options menu case
-
             # -----------------------------------------------------------------------------------
             # Registrer new contact
             if(op == 1):
@@ -79,6 +78,8 @@ def main():
                     print("Name: ", i['name'], " <---> ",
                           "Number:", i['number'])
                 input("\npress enter to continue . . .      ")
+            elif(op == 3):
+                print("1")
             elif(op == 4):
                 break
 
